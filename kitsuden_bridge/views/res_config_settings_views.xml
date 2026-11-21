@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Settings > Sales: where Kitsuden is, the secret that signs notices, the payment journal. -->
+    <record id="res_config_settings_view_form_kitsuden" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.kitsuden</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="sale.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//app[@name='sale_management']" position="inside">
+                <block title="Kitsuden" name="kitsuden_bridge_settings">
+                    <setting string="Change notices" help="Where Odoo tells Kitsuden what changed, and the secret that signs it.">
+                        <field name="kitsuden_webhook_url" placeholder="https://api.example.com/api/odoo/webhook"/>
+                        <field name="kitsuden_webhook_secret" password="True"/>
+                    </setting>
+                    <setting string="Web payments" help="The journal payments taken on the web are recorded in.">
+                        <field name="kitsuden_payment_journal_id"/>
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+</odoo>

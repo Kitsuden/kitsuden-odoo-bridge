@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        The user Kitsuden's API key belongs to. Give it this group plus what it needs to do its
+        work with its own rights: Sales (User: own documents only is not enough: all documents),
+        Inventory (User), Invoicing (Billing). Do not give it administration.
+    -->
+    <record id="group_kitsuden_integration" model="res.groups">
+        <field name="name">Kitsuden integration</field>
+        <field name="comment">May call the Kitsuden bridge: create web orders and confirm paid ones.</field>
+    </record>
+</odoo>

@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_kitsuden_bridge_outbox_system,kitsuden.bridge.outbox system,model_kitsuden_bridge_outbox,base.group_system,1,0,0,1
+access_kitsuden_bridge_payment_system,kitsuden.bridge.payment system,model_kitsuden_bridge_payment,base.group_system,1,0,0,0
+access_kitsuden_bridge_payment_integration,kitsuden.bridge.payment integration,model_kitsuden_bridge_payment,group_kitsuden_integration,1,0,0,0

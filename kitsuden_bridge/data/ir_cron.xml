@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        Sends pending changes to Kitsuden. It runs every minute, and a change triggers it at once
+        (outbox.enqueue), so a sale at the counter reaches the shop in seconds, not minutes.
+    -->
+    <record id="ir_cron_send_outbox" model="ir.cron">
+        <field name="name">Kitsuden: send changes</field>
+        <field name="model_id" ref="model_kitsuden_bridge_outbox"/>
+        <field name="state">code</field>
+        <field name="code">model._cron_send()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">minutes</field>
+        <field name="active" eval="True"/>
+    </record>
+</odoo>

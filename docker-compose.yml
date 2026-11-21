@@ -1,0 +1,33 @@
+# An Odoo 19 to try the module in. Not for production: fixed passwords, no proxy, no workers.
+#
+#   docker compose up -d        →  http://localhost:8069
+#
+# The module is mounted from this folder, so a change is one restart (or an `-u kitsuden_bridge`)
+# away.
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: odoo
+      POSTGRES_PASSWORD: odoo
+    volumes:
+      - odoo-db:/var/lib/postgresql/data
+
+  odoo:
+    image: odoo:19
+    depends_on:
+      - db
+    ports:
+      - "127.0.0.1:8069:8069"
+    environment:
+      HOST: db
+      USER: odoo
+      PASSWORD: odoo
+    volumes:
+      - ./kitsuden_bridge:/mnt/extra-addons/kitsuden_bridge
+      - odoo-data:/var/lib/odoo
+
+volumes:
+  odoo-db:
+  odoo-data:
